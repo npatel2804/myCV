@@ -17,7 +17,7 @@ jobs:
       - name: Install texlive-latex-extra
         run: sudo apt-get install texlive-latex-extra
       - name: Build pdf
-        run: exp.tex -o output/my_awesome_cv.pdf
+        run: pdflatex exp.tex -o output/my_awesome_cv.pdf
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with: 
