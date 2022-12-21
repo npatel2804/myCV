@@ -1,25 +1,4 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2019 Jan Küster
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
 
 
 %============================================================================%
@@ -29,9 +8,9 @@
 %============================================================================%
 
 %we use article class because we want to fully customize the page and don't use a cv template
-\documentclass[10pt,A4]{article}	
-
-
+\documentclass[11pt,A4]{article}	
+\usepackage{setspace}
+\onehalfspacing
 %----------------------------------------------------------------------------------------
 %	ENCODING
 %----------------------------------------------------------------------------------------
@@ -55,8 +34,8 @@
 %\usepackage[defaultsans]{droidsans}
 %\usepackage[default]{comfortaa}
 %\usepackage{cmbright}
-\usepackage[default]{raleway}
-%\usepackage{fetamont}
+%\usepackage[default]{raleway}
+\usepackage{fetamont}
 %\usepackage[default]{gillius}
 %\usepackage[light,math]{iwona}
 %\usepackage[thin]{roboto} 
@@ -73,32 +52,21 @@
 %---------------------------------------------------------------------------------------- 
 
 % include the fontawesome icon set
-\usepackage{fontawesome}
-
-% use to vertically center content
-% credits to: http://tex.stackexchange.com/questions/7219/how-to-vertically-center-two-images-next-to-each-other
-\newcommand{\vcenteredinclude}[1]{\begingroup
-\setbox0=\hbox{\includegraphics{#1}}%
-\parbox{\wd0}{\box0}\endgroup}
-
-% use to vertically center content
-% credits to: http://tex.stackexchange.com/questions/7219/how-to-vertically-center-two-images-next-to-each-other
-\newcommand*{\vcenteredhbox}[1]{\begingroup
-\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
+\usepackage{fontawesome5}
 
 % icon shortcut
 \newcommand{\icon}[3] { 							
-	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+	\makebox(#2, #2){\textcolor{lightcol}{\csname \faIcon{#1}\endcsname}}
 }	
 
 % icon with text shortcut
 \newcommand{\icontext}[4]{ 						
-	\vcenteredhbox{\icon{#1}{#2}{#3}}  \hspace{2pt}  \parbox{0.9\mpwidth}{\textcolor{#4}{#3}}
+	\vcenteredhbox{\icon{#1}{#2}{#3}} \parbox{0.9\mpwidth}{\textcolor{#4}{#3}}
 }
 
 % icon with website url
 \newcommand{\iconhref}[5]{ 						
-    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{#4}{\textcolor{#5}{#3}}
+    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{0.5pt} \href{#4}{\textcolor{#5}{#3}}
 }
 
 % icon with email link
@@ -110,12 +78,6 @@
 %	PAGE LAYOUT  DEFINITIONS
 %----------------------------------------------------------------------------------------
 
-% page outer frames (debug-only)
-% \usepackage{showframe}		
-
-% we use paracol to display breakable two columns
-\usepackage{paracol}
-
 % define page styles using geometry
 \usepackage[a4paper]{geometry}
 
@@ -124,9 +86,6 @@
 
 \usepackage{fancyhdr}
 \pagestyle{empty}
-
-% space between header and content
-% \setlength{\headheight}{0pt}
 
 % indentation is zero
 \setlength{\parindent}{0mm}
@@ -152,10 +111,10 @@
 \usepackage{graphicx}
 
 % use this for floating figures
-% \usepackage{wrapfig}
-% \usepackage{float}
-% \floatstyle{boxed} 
-% \restylefloat{figure}
+\usepackage{wrapfig}
+\usepackage{float}
+\floatstyle{boxed} 
+\restylefloat{figure}
 
 %for drawing graphics		
 \usepackage{tikz}				
@@ -168,7 +127,7 @@
 \usepackage{color}
 
 % primary color
-\definecolor{maincol}{RGB}{ 225, 0, 0 }
+\definecolor{maincol}{RGB}{ 41, 190. 176 }
 
 % accent color, secondary
 % \definecolor{accentcol}{RGB}{ 250, 150, 10 }
@@ -205,6 +164,10 @@
 	\begin{itemize}{#1}\end{itemize}
 }
 
+%--------------------------
+% GOLang Symbol
+%------------------------
+\newcommand*\gosym{{\includegraphics[width=10em]{golang.png}}}
 %----------------------------------------------------------------------------------------
 %	 CV TEXT
 %----------------------------------------------------------------------------------------
@@ -213,7 +176,7 @@
 % Allows complex commands to be passed, too.
 % param 1: *any
 \newcommand{\cvtext}[1] {
-	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
+	\begin{tabular*}{1\mpwidth}{p{0.96\mpwidth}}
 		\parbox{1\mpwidth}{#1}
 	\end{tabular*}
 }
@@ -225,33 +188,12 @@
 % Renders a a CV section headline with a nice underline in main color.
 % param 1: section title
 \newcommand{\cvsection}[1] {
-	\vspace{14pt}
-	\cvtext{
-		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
-		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\
+	
+\cvtext{
+		\textbf{\LARGE{\textcolor{darkcol}{{#1}}}}\\[-6pt]
+		\textcolor{maincol}{ \rule{0.1\textwidth}{1pt} } \\
 	}
 }
-
-%----------------------------------------------------------------------------------------
-%	META SKILL
-%----------------------------------------------------------------------------------------
-
-% Renders a progress-bar to indicate a certain skill in percent.
-% param 1: name of the skill / tech / etc.
-% param 2: level (for example in years)
-% param 3: percent, values range from 0 to 1
-\newcommand{\cvskill}[3] {
-	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
- 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
-	\end{tabular*}%
-	
-	\hspace{4pt}
-	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
-		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
-		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.15);
-  	\end{tikzpicture}%
-}
-
 
 %----------------------------------------------------------------------------------------
 %	 CV EVENT
@@ -262,13 +204,80 @@
 % Additional Information can be passed in text or list form (or other environments).
 % the work you did
 % param 1: time-frame i.e. Sep 14 - Jan 15 etc.
-% param 2:	 event name (job position etc.)
-% param 3: Customer, Employer, Industry
+% param 2:	Company Name
+% param 3: Job Position
+% param 4: Project description
+% param 5: work done (optional)
+\newcommand{\cvevent}[7] {
+	
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+	 		\textcolor{black}{\large\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
+			\textcolor{maincol}{\textbf{#3}} & \\
+		\end{tabular*}\\[8pt]
+	
+		\ifthenelse{\isempty{#4}}{}{
+			\cvtext{#4}
+		}
+	}
+
+	\ifthenelse{\isempty{#5}}{}{
+		\vspace{9pt}
+		{#5}
+	}
+	\vspace{10pt}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	Github Hobby Project
+%----------------------------------------------------------------------------------------
+
+% Renders a table and a paragraph (cvtext) wrapped in a parbox (to ensure minimum content
+% is glued together when a pagebreak appears).
+% Additional Information can be passed in text or list form (or other environments).
+% the work you did
+% param 1: time-frame i.e. Sep 14 - Jan 15 etc.
+% param 2:	 Project Name (job position etc.)
+% param 3: Language
+% param 4: Short description
+\newcommand{\gitproj}[4] {
+	
+	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
+	% if you need more control on page breaks, remove the parbox
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+	 		\textcolor{black}{\large\textbf{#2}} & \colorbox{white}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
+			\textcolor{maincol}{\textbf{#3}} & \\
+		\end{tabular*}\\[8pt]
+	
+		\ifthenelse{\isempty{#4}}{}{
+			\cvtext{#4}\\
+		}
+	}
+
+
+	\vspace{14pt}
+}
+
+%----------------------------------------------------------------------------------------
+%	 Education Command
+%----------------------------------------------------------------------------------------
+
+% Renders a table and a paragraph (cvtext) wrapped in a parbox (to ensure minimum content
+% is glued together when a pagebreak appears).
+% Additional Information can be passed in text or list form (or other environments).
+% the work you did
+% param 1: time-frame i.e. Sep 14 - Jan 15 etc.
+% param 2:	 College Name
+% param 3: Degree Name
 % param 4: Short description
 % param 5: work done (optional)
 % param 6: technologies include (optional)
 % param 7: achievements (optional)
-\newcommand{\cvevent}[7] {
+\newcommand{\cveducation}[7] {
 	
 	% we wrap this part in a parbox, so title and description are not separated on a pagebreak
 	% if you need more control on page breaks, remove the parbox
@@ -278,27 +287,8 @@
 			\textcolor{maincol}{\textbf{#3}} & \\
 		\end{tabular*}\\[8pt]
 	
-		\ifthenelse{\isempty{#4}}{}{
-			\cvtext{#4}\\
-		}
 	}
 
-	\ifthenelse{\isempty{#5}}{}{
-		\vspace{9pt}
-		{#5}
-	}
-
-	\ifthenelse{\isempty{#6}}{}{
-		\vspace{9pt}
-		\cvtext{\textbf{Technologies include:}}\\
-		{#6}
-	}
-
-	\ifthenelse{\isempty{#7}}{}{
-		\vspace{9pt}
-		\cvtext{\textbf{Achievements include:}}\\
-		{#7}
-	}
 	\vspace{14pt}
 }
 
@@ -325,321 +315,181 @@
 	\cvtext{#4}\\[14pt]
 }
 
-%---------------------------------------------------------------------------------------
-%	QR CODE
-%----------------------------------------------------------------------------------------
-
-% Renders a qrcode image (centered, relative to the parentwidth)
-% param 1: percent width, from 0 to 1
-\newcommand{\cvqrcode}[1] {
-	\begin{center}
-		\includegraphics[width={#1}\mpwidth]{qrcode}
-	\end{center}
-}
-
 
 %============================================================================%
-%
-%
-%
 %	DOCUMENT CONTENT
-%
-%
-%
 %============================================================================%
 \begin{document}
-\columnratio{0.31}
 \setlength{\columnsep}{2.2em}
 \setlength{\columnseprule}{4pt}
-\colseprulecolor{lightcol}
-\begin{paracol}{2}
-\begin{leftcolumn}
-%---------------------------------------------------------------------------------------
-%	META IMAGE
-%----------------------------------------------------------------------------------------
-\includegraphics[width=\linewidth]{untitled.jpg}	%trimming relative to image size
 
-%---------------------------------------------------------------------------------------
-%	META SKILLS
-%----------------------------------------------------------------------------------------
-\cvsection{SKILLS}
-
-\cvskill{Python} {5+ yrs} {1} \\[-2pt]
-
-\cvskill{Ansible} {5+ yrs} {1} \\[-2pt]
-
-\cvskill{Linux} {5+ yrs} {1} \\[-2pt]
-
-\cvskill{Open Source Tools} {5+ yrs} {1} \\[-2pt]
-
-\cvskill{Django} {5+ yrs} {0.8} \\[-2pt]
-
-\cvskill{Html/CSS} {3+ yrs} {0.72} \\[-2pt]
-
-\cvskill{Javascript} {3+ yrs} {0.69} \\[-2pt]
-
-\cvskill{GIT} {3+ yrs} {1} \\[-2pt]
-
-
-
-\vfill\null
-\cvsection{CONTACT}
-	
-\icontext{MapMarker}{12}{Example St. 1\\12345 Somewhere}{black}\\[6pt]
-\icontext{MobilePhone}{12}{+49 178 910 11 12 13}{black}\\[6pt]
-\iconemail{Envelope}{12}{contact@example.com}{contact@example.com}{black}\\[6pt]
-
-\vfill\null
-\cvqrcode{0.7}
-
-%---------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
-\newpage
-\cvsection{EDUCATION}
-
-\cvmetaevent
-{2009 - 2011}
-{M. Sc. Physics.}
-{Universität Bonn}
-{Main thematic priority of those master studies was numerical time series analysis of non-linear dynamical systems. Besides data analysis and transformation, great importance was attached to fast algorithms and efficient software architecture.
-
-In the master thesis a numerical approach for the detection of the direction of interaction was proposed. Analysis of this new approach was performed with the help computer simulations to find out its limits and to compare it to another commonly used approaches.
-
-This numerical approach was highly optimised for cluster computing and implemented in c++ . For those purposes a distributed computing cluster had to be set up and administrated.}
-
-\cvmetaevent
-{2006 - 2009}
-{B. Sc. Physics.}
-{Universität Bonn}
-{The topic for the bachelor's thesis was 'Feshbach resonance'. A numerical application was built to calculate the diagrams.}
-
-\vfill\null
-\cvqrcode{0.7}
-
-%---------------------------------------------------------------------------------------
-%	CERTIFICATION
-%----------------------------------------------------------------------------------------
-\newpage
-\cvsection{CERTIFICATIONS}
-
-\cvmetaevent
-{LPIC 1 - Linux administrator}
-{}
-{}
-{Certificate issued by the Linux Professional Institute to prove abilities in Linux administration}
-
-\cvmetaevent
-{IBM InfoSphere Advanced DataStage Essentials}
-{}
-{}
-{Intense course about the ETL technologies and the use of IBM DataStage.}
-
-\cvmetaevent
-{Jump Start Program}
-{}
-{}
-{Two months full-time training in object oriented programming in Java SE/EE, software development, testing and modern enterprise web-frameworks. Other topics were object oriented design patterns, test-driven development, SQL-databases and webservers in Java environment (Tomcat / Glasfish / JBoss / Jety)}
-
-
-\cvmetaevent
-{Online Classes}
-{}
-{}
-{It is important for me to stay up to date with the newest topics in the field of IT. In DevOps it is also important to have a general overview and a hands-on experience on them. Therefore, besides intense article studies, I also keep myself up to date with online classes.}
-
-\vfill
-\cvqrcode{0.7}
-
-\newpage
-\mbox{} % hotfix to place qrcode on the bottom when there are not other elements
-\vfill
-\cvqrcode{0.7}
-
-\end{leftcolumn}
-\begin{rightcolumn}
 %---------------------------------------------------------------------------------------
 %	TITLE  HEADER
 %----------------------------------------------------------------------------------------
-\fcolorbox{white}{darkcol}{\begin{minipage}[c][3.5cm][c]{1\mpwidth}
+\fcolorbox{white}{maincol}{
+	\begin{minipage}[c][2.5cm][c]{1\mpwidth}
+
 	\begin {center}
-		\HUGE{ \textbf{ \textcolor{white}{ \uppercase{ ILYA RUMYANTSEV } } } } \\[-24pt]
-		\textcolor{white}{ \rule{0.1\textwidth}{1.25pt} } \\[4pt]
-		\large{ \textcolor{white} {Freelance Automation  Consultant and Developer} }
+		\HUGE{ \textbf{ \textcolor{white}{  { Nikhil Patel}} } } \\[-35pt]
+		\textcolor{black}{ \rule{0.5\textwidth}{1.25pt} } \\[0.5pt]
+  	\Large{ \textbf{ \textcolor{white}{  { Golang Developer}} } } \\[-35pt]
+   
 	\end {center}
-\end{minipage}} \\[14pt]
+\end{minipage}} \\[10pt]
 \vspace{-12pt}
 
+
 %---------------------------------------------------------------------------------------
-%	PROFILE
+%	Contact Details
 %----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{PROFILE}
+\fcolorbox{white}{maincol}{
+	\begin{minipage}[c][0.50cm][c]{1\mpwidth}
 
-\cvtext{IT Consultant with strong theoretical skills and a passion for OpenSource sofware.\\
+	\begin {center}
+ {\color{lightcol}\faIcon{envelope}}{ \textbf{ \textcolor{white}{{ nikhil2804patel@gmail.com }}}} {\color{lightcol}\faIcon{mobile-alt}}{ \textbf{ \textcolor{white}{{ +91-830-6364-830 }}}} \\[-35pt]
+   
+	\end {center}
+\end{minipage}} \\[10pt]
+\vspace{-10pt}
 
-DevOps Engineer, specialized both in automation and in custom application development, experienced with large projects and heterogeneous infrastructures. The link between development and operations, comfortable in both.\\
+%---------------------------------------------------------------------------------------
+% SKILLS	
+%----------------------------------------------------------------------------------------
+\vspace{15pt}
+\cvsection{Technical Skills}
+{\cvlist{
+\itemsep0.2em
+	\item Golang (Go), Kubernetes (k8s.io packages), Amazon Web Services (Organizations, Accounts, Athena, Control- \\tower, CUR, IAM, firehose, Amazon S3 SQS, Eventhub, STS), Hashicorp Vault, Microservice Architecture, \\Ginkgo, GitHub (Git), Github action, Jira, Docker, ArgoCD, Dynatrace, Splunk, SQL
+	\item Intermediate knowledge of Terraform,  Protobuf, gRPC, Java, Python, node js, Vue js, Kafka, Rabbitmq, GQL, \\JWT, Okta
+	}}
+\vspace{15pt}
 
-Customer-oriented and structured method of working, focused on quality and maintainability. Highly motivated to work in a team, both comfortable in big companies as in small teams.\\
 
-}
+%---------------------------------------------------------------------------------------
+%	Summary
+%----------------------------------------------------------------------------------------
+\cvsection{Summary}
+
+{\cvlist{
+\itemsep0.2em
+\item Golang developer with 6+ years of experience developing microservices and web services. 
+\item Expertise in the debugging of complex Go code and Kubernetes services on Linux platforms. Good knowledge of Design Patterns, Multithreading, and GO containers. Well-versed in the use of Channels and Goroutines.
+
+\item Experience with AWS, Docker, and Kubernetes for designing, developing, implementing, and deploying cloud applications.
+
+\item Extensive experience in the entire SDLC, including requirement analysis, design, development, testing, and implementation.
+
+\item Managed all aspects of the project's life cycle using Agile methodologies. Expertise in creating user stories and reports using JIRA.
+
+\item Expertise in writing SQL queries for Oracle DB, MySQL, and PostgreSQL databases used in application development.
+
+}}
+\vspace{15pt}
 
 %---------------------------------------------------------------------------------------
 %	WORK EXPERIENCE
 %----------------------------------------------------------------------------------------
-\vfill\null
-\cvsection{WORK EXPERIENCE}
+\cvsection{Work Experience}
 
 \cvevent
-	{Sep 15 - NOW}
-	{DevOps/FullStack developer}
-	{Research and Development}
-	{A large IAM project required an intuitive interface for role-based access and rights management. At the same time, new workfows for role based access, life time and monitoring had to be established}
+	{Aug 22 - Present}
+	{McKinsey \& Co., India}
+	{Sr Golang Developer}
+	{\textbf{Project}: An account on demand service, which provides a user with an Amazon Web Services account on demand.}
 	{\cvlist{
-		\item Creation of a web portal for role- and rights management
-		\item Establishing a connection to the existing MicroFocus role solution
-		\item Development of new role-based workfows and processes, as well as training and support
-		\item Maintenance of existing infrastructure
-	}}
-	{\cvlist {
-		\item Django for the roles- and rights management tool backend (backend is a REST interface)
-		\item Angular for the easy frontend interaction
-		\item HTML5/CSS3/Bootstrap3 for the frontend
-		\item Ansible + Docker for 1-click deployments
-	}}
-	{\cvlist{
-		\item A web based tool for an intuitive role assignment and administration
-		\item Online overview of company structures, projects, etc
-		\item Tools for role review, reporting and troubleshooting
-	}}
+ \itemsep0.2em
+\item Developed API services using Golang, k8s CRD and k8s.io packages, which act as middleware between our application and Kubernetes.
+\item Developed Golang API services to do operations with AWS accounts using the aws-sdk-go package (organizations, account, sts, s3, firehose etc). Also, Has experience in handling AWS Organization, root account, system account, audit account, Landing Zones, Guardrails, Control Tower etc.
+\newpage
+ \item Developed a few Ul modules for the front end using vue.js. Also made changes to existing UI to facilitate requirements.
+ \item Developed e2e test cases using Golang and Ginkgo framework for application to ensure application performance and prevention of prod incidents.
+\item Integrated Git Action with repositories where the developer actions (like build, linting, docker image push, e2e testing etc) trigger automatically when we push code or create a pull request.
+\item Using GO, developed Kubernetes cronjobs (ETL microservices) for reading a large volume of data from AWS CUR using Athena and Loading it into the Postgres database.
+\item Responsible for software maintenance across the codebase. Done any debugging necessary to fix any coding or compiling issues. Which Requires a wide understanding of the internals of the software and systems.
+\item Containerized applications using Docker: Created docker files, build docker images for microservices to run on Kubernetes.
+}}
 
-\vfill\null
+
+\vspace{15pt}
+
 \cvevent
-	{Jan 15 - Sep 15}
-	{DevOps engineer}
-	{Research and Development}
-	{Responsible for infrastructure architecture with regard on the future development and tool selection in the field of identity and access management}
+	{Feb 21 - Aug 22}
+	{Hewlett Packard Enterprise, India}
+	{Golang Developer}
+	{\textbf{Project}: An application where users can interact and do the operations with HPE Nimble/Primera Storage.}
 	{\cvlist{
-		\item Selection of future-proof tools for a large infrastructure
-		\item Infrastructure migration into a cloudstack cloud
-		\item Quality assurance in terms of documentation
-		\item Tool development for infrastructure overview
-		\item Development of Ansible modules for client
-	}}
-	{\cvlist {
-		\item Python for custom tool development
-		\item Ansible for infrastructure migration and cloud configuration
-		\item SLES12
-		\item Django for Visualization
-	}}
-	{\cvlist{
-		\item Ansible module for SLES12 System + Package registration
-		\item Python tool for ACL-administration in cloud
-		\item Fully automated migration of old systems into cloud with Ansible playbooks/roles
-		\item Django tool on LDAP - Schema Review
+ \itemsep0.2em
+ \item Leveraged my golang knowledge to develop Rest APIs using technologies like GQL (gqlgen), postgre,kafka for HPE storage cloud application.
+\item In process, Got extensive knowledge of data center and containerization technologies like (VMWare vcenter, Brocade Switches, Nimble storage, Primera storage etc.)
+\item Developed Deployment components (docker file, .yml for Kubernetes pods, Configmap) for Microservices.
 	}}
 
-\vfill\null
+
+\vspace{15pt}
+
 \cvevent
-	{Mar 14 - Jan 15}
-	{Systems Analyst}
-	{Research and Development}
-	{Responsible for infrastructure architecture / automaton as well as custom tool development on a project for directory services and identity / access management in a large heterogeneous environment.}
+	{Apr 20 - Feb 21}
+	{Ayopop Technology India Pvt Ltd, India}
+	{Golang Developer}
+	{\textbf{Project}: An application where users can recharge, pay, buy Gift Vouchers etc.}
 	{\cvlist{
-		\item Design and implementation of update and deployment process automaton
-		\item Quality assurance by design of infrastructure monitoring, centralized logging solutions and documentation
-		\item Customized tool creation for ldap operations
-		\item Installation and maintenance of single sign on solutions
-		\item Customer support in ldap / infrastructural / programming concerns
-	}}
-	{\cvlist {
-		\item Ansible for infrastructure automaton and configuration management
-		\item Python for custom Tool development
-		\item nxLog + rsyslog + graylog for logging infrastructure
-		\item NOVELL eDirectory
-		\item Shibboleth as identity Provider combined with ldap
-		\item SLES11
-		\item Git for configuration and documentation versioning
-	}}
-	{\cvlist{
-		\item Drastically accelerated (~20x faster) the update process and improved its reliability by introduction of centralized configuration management
-		\item Extended the python-ldap library with interfaces for simplified access and modification of LDAP-Objects and searches
-		\item  Introduction of a complete and reliable centralized logging solution including log filtering and alerting for both windows and Linux systems
+	\item	Created microservices using Golang, MySQL DB (using GORMS) to facilitate payments and recharges. 
+\item Developed numerous APIs that are related to payments and gift vouchers for a variety of vendors. 
+\item Implemented JWT authentication, access management, and request-response handling using Golang middleware. 
+ \item Made user experience smoother and glitch-free through extensive bug fixing. 
 	}}
 
-\vfill\null
+\newpage
+
 \cvevent
-	{Sep 13 - Mar 14}
-	{Systems Analyst}
-	{Tourism industry}
-	{Responsible for data transformation and tool customization on a migration (legacy c++ code from Solaris to Linux systems) project. The tasks include}
+	{Jan 17 - Apr 2020}
+	{Tata Consultancy Services (TCS), India}
+	{System Engineer}
+	{\textbf{Project}: A service which is used by Small and Medium Enterprises to process payroll, Tax collection etc.}
 	{\cvlist{
-		\item Tool development for identification of critical spots in code
-		\item Legacy code analysis
-		\item Quality assurance
-		\item Department-wide training in python
-		\item Consulting in topics of migration to Git
-	}}
-	{\cvlist {
-		\item Python
-		\item Git
-		\item Linux (Debian)
-	}}
-	{\cvlist{
-		\item Implementing code coverage and dynamic code checker for c++ legacy source code based on gcov
-		\item Introduction of Python + Environment in project
+	\item	Utilized Golang and MySQL to develop TCS's in-house iON products to help customers manage their payroll and HR. 
+\item Developed ETL cycles for processing and storing data in MySQL have been developed and deployed successfully. It can later be used by customers for data analysis and reporting. 
+ \item Created the common rest api routing library, which reduced API development time. 
+\item Created POCs in Protobuf and gRPC, which proved to be a building block for transforming Rest services into gRPC. 
 	}}
 
-\vfill\null
-\cvevent
-	{Oct 12 - Sep 13}
-	{Systems Analyst}
-	{Tourism industry}
-	{Responsible for the infrastructure including performance and quality assurance on a large social media project.}
-	{\cvlist{
-		\item Organization and care of a cloud network (Debian systems)
-		\item Support for software developers
-		\item Configuration of open source tools for code quality and documentation
-		\item Implementation of performance checks
-		\item Implementation of automated reports on code quality and performance
-	}}
-	{\cvlist {
-		\item Python + Django for tool development
-		\item Sonar as static and dynamic tool for code analysis
-		\item OpenLDAP for user rights management
-		\item JIRA as the issue tracking/SCRUM tool
-	}}
-	{\cvlist{
-		\item Customized wiki and documentation application for developers with Jenkins and Git integration
-		\item Django web application to test the product performance using selenium tests in background with customizable tests / test
-environments ad a graphical evaluation using the jqPlot library (also Jaiascript / jQuery)
-		\item Improvement of the overall code quality by raising test coverage (+ \~30\%) and identification + elimination of potential code flaws
-	}}
 
-\vfill\null
-\cvevent
-	{Oct 11 - Oct 12}
-	{IT Consultant}
-	{Accenture Tech. Solutions}
-	{Large public service project with the goal to establish a platform for handling of finance processes with a very high number of transactions. Main focus was the migration of legacy data, by assuring data quality and transformation into various formats}
-	{\cvlist{
-		\item Customer consulting with regard to loading / unloading interfaces
-		\item Definition of requirements for transformation of legacy data
-		\item Implementation of algorithms for data transformation
-		\item Tool development for secure data transport
-		\item Tool development for tests of data quality/interface implementation
-	}}
-	{\cvlist {
-		\item Standard Linux tools, such as awk, sed, grep, ...
-		\item Python for in-depth data analysis
-		\item Java for transport layers
-		\item IBM DataStage
-	}}
-	{\cvlist{
-		\item Definition of uniform standards
-		\item Introduction of the standard Linux stack as global toolset for data analysis in project
-	}}
+\cvsection{EDUCATION}
+\vspace{15pt}
+\cveducation
+	{2012 - 2016}
+	{L.D. College of Engineering, Ahmedabad, India}
+	{B.E, Instrumentation and Control Engineering (ICE)}
 
+
+
+
+\vspace{5pt}
+\cvsection{Hobby Projects}
+
+\gitproj
+        {}
+	{optionChainWatch}
+	{Golang}
+	{\textbf{Project}: A utility which will keep monitoring the stock market option chain and generate excels on command with required data for further analysis.}
+
+
+
+\gitproj
+        {}
+	{telegramTest}
+	{Golang}
+	{\textbf{Project}: A sample project. Which uses the telegram apis and enable user to send messages and receive messages from the Golang Code.}
+
+
+
+
+ \gitproj
+        {}
+	{telegramFunFactBot}
+	{Golang}
+	{\textbf{Project}: a simple telegram bot, which will send a random fun fact to user when user ask for it. In this, User send message to bot and bot reply with the
+ fun fact. It utilize third party API.}
 % hotfixes to create fake-space to ensure the whole height is used
 \mbox{}
 \vfill
@@ -648,6 +498,6 @@ environments ad a graphical evaluation using the jqPlot library (also Jaiascript
 \mbox{}
 \vfill
 \mbox{}
-\end{rightcolumn}
-\end{paracol}
+% \end{rightcolumn}
+% \end{paracol}
 \end{document}
