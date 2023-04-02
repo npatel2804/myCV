@@ -1,6 +1,5 @@
 
 
-
 %============================================================================%
 %
 %	DOCUMENT DEFINITION
@@ -31,11 +30,11 @@
 
 % some tex-live fonts - choose your own
 
-%\usepackage[defaultsans]{droidsans}
+\usepackage[defaultsans]{droidsans}
 %\usepackage[default]{comfortaa}
 %\usepackage{cmbright}
 %\usepackage[default]{raleway}
-\usepackage{fetamont}
+%\usepackage{fetamont}
 %\usepackage[default]{gillius}
 %\usepackage[light,math]{iwona}
 %\usepackage[thin]{roboto} 
@@ -56,7 +55,7 @@
 
 % icon shortcut
 \newcommand{\icon}[3] { 							
-	\makebox(#2, #2){\textcolor{lightcol}{\csname \faIcon{#1}\endcsname}}
+	\makebox(#2, #2){\textcolor{black}{\csname \faIcon{#1}\endcsname}}
 }	
 
 % icon with text shortcut
@@ -127,7 +126,7 @@
 \usepackage{color}
 
 % primary color
-\definecolor{maincol}{RGB}{ 41, 190. 176 }
+\definecolor{maincol}{RGB}{ 255, 255, 255 }
 
 % accent color, secondary
 % \definecolor{accentcol}{RGB}{ 250, 150, 10 }
@@ -136,7 +135,7 @@
 \definecolor{darkcol}{RGB}{ 70, 70, 70 }
 
 % light color
-\definecolor{lightcol}{RGB}{245,245,245}
+% \definecolor{lightcol}{RGB}{245,245,245}
 
 
 % Package for links, must be the last package used
@@ -214,8 +213,8 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\large\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\textbf{#3}} & \\
+	 		\textcolor{black}{\large\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{black}{#1}}} \\
+			\textcolor{black}{\textbf{#3}} & \\
 		\end{tabular*}\\[8pt]
 	
 		\ifthenelse{\isempty{#4}}{}{
@@ -249,8 +248,8 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\large\textbf{#2}} & \colorbox{white}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\textbf{#3}} & \\
+	 		\textcolor{black}{\large\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{black}{#1}}} \\
+			\textcolor{black}{\textbf{#3}} & \\
 		\end{tabular*}\\[8pt]
 	
 		\ifthenelse{\isempty{#4}}{}{
@@ -283,8 +282,8 @@
 	% if you need more control on page breaks, remove the parbox
 	\parbox{\mpwidth}{
 		\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
-	 		\textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{white}{#1}}} \\
-			\textcolor{maincol}{\textbf{#3}} & \\
+	 		\textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.25\mpwidth]{\textcolor{black}{#1}}} \\
+			\textcolor{black}{\textbf{#3}} & \\
 		\end{tabular*}\\[8pt]
 	
 	}
@@ -326,13 +325,13 @@
 %---------------------------------------------------------------------------------------
 %	TITLE  HEADER
 %----------------------------------------------------------------------------------------
-\fcolorbox{white}{maincol}{
+\fcolorbox{black}{maincol}{
 	\begin{minipage}[c][2.5cm][c]{1\mpwidth}
 
 	\begin {center}
-		\HUGE{ \textbf{ \textcolor{white}{  { Nikhil Patel}} } } \\[-35pt]
+		\HUGE{ \textbf{ \textcolor{black}{  { Nikhil Patel}} } } \\[-35pt]
 		\textcolor{black}{ \rule{0.5\textwidth}{1.25pt} } \\[0.5pt]
-  	\Large{ \textbf{ \textcolor{white}{  { Golang Developer}} } } \\[-35pt]
+  	\Large{ \textbf{ \textcolor{black}{  { Golang Developer}} } } \\[-35pt]
    
 	\end {center}
 \end{minipage}} \\[10pt]
@@ -342,11 +341,11 @@
 %---------------------------------------------------------------------------------------
 %	Contact Details
 %----------------------------------------------------------------------------------------
-\fcolorbox{white}{maincol}{
+\fcolorbox{black}{maincol}{
 	\begin{minipage}[c][0.50cm][c]{1\mpwidth}
 
 	\begin {center}
- {\color{lightcol}\faIcon{envelope}}{ \textbf{ \textcolor{white}{{ nikhil2804patel@gmail.com }}}} {\color{lightcol}\faIcon{mobile-alt}}{ \textbf{ \textcolor{white}{{ +91-830-6364-830 }}}} \\[-35pt]
+ {\color{black}\faIcon{envelope}}{ \textbf{ \textcolor{black}{{ nikhil2804patel@gmail.com }}}} {\color{black}\faIcon{mobile-alt}}{ \textbf{ \textcolor{black}{{ +91-830-6364-830 }}}} \\[-35pt]
    
 	\end {center}
 \end{minipage}} \\[10pt]
@@ -358,9 +357,9 @@
 \vspace{15pt}
 \cvsection{Technical Skills}
 {\cvlist{
-\itemsep0.2em
-	\item Golang (Go), Kubernetes (k8s.io packages), Amazon Web Services (Organizations, Accounts, Athena, Control- \\tower, CUR, IAM, firehose, Amazon S3 SQS, Eventhub, STS), Hashicorp Vault, Terraform, Microservice Architecture, \\Ginkgo, GitHub (Git), Github action, Jira, Docker, ArgoCD, Dynatrace, Splunk, SQL
-	\item Intermediate knowledge of Terraform,  Protobuf, gRPC, Java, Python, node js, Vue js, Kafka, Rabbitmq, GQL, \\JWT, Okta
+\itemsep0.05em
+	\item Golang (Go), Python, Kubernetes (k8s.io packages), Amazon Web Services (Organizations, Accounts, Athena, IAM, Control-tower, CUR, firehose, Amazon S3 SQS, Eventhub, STS), Hashicorp Vault, Terraform, Microservice Architecture, Ginkgo, GitHub (Git), Github action, Jira, Docker, ArgoCD, Dynatrace, Splunk, SQL
+	\item Intermediate knowledge of Terraform,  Protobuf, gRPC, Java, Python, node js, Vue js, Kafka, Rabbitmq, GQL, JWT, Okta
 	}}
 \vspace{15pt}
 
@@ -400,7 +399,6 @@
  \itemsep0.2em
 \item Developed API services using Golang, k8s CRD and k8s.io packages, which act as middleware between our application and Kubernetes.
 \item Developed Golang API services to do operations with AWS accounts using the aws-sdk-go package (organizations, account, sts, s3, firehose etc). Also, Has experience in handling AWS Organization, root account, system account, audit account, Landing Zones, Guardrails, Control Tower etc.
-\newpage
  \item Developed a few Ul modules for the front end using vue.js. Also made changes to existing UI to facilitate requirements.
  \item Created Terraform scripts to manage and deploy resources and infrastructure to AWS and Dynatrace.
  \item Developed e2e test cases using Golang and Ginkgo framework for application to ensure application performance and prevention of prod incidents.
@@ -456,7 +454,7 @@
 
 
 \cvsection{EDUCATION}
-\vspace{15pt}
+\vspace{2pt}
 \cveducation
 	{2012 - 2016}
 	{L.D. College of Engineering, Ahmedabad, India}
